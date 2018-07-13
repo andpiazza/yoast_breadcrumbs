@@ -35,62 +35,62 @@ Breadcrumbs are now active on your theme. Now choose from the options below the 
 **Via PHP**
 One efficient way to remove certain pages is to implement it via IF statement on PHP on header.php
 This code eliminates breadcrumbs from all pages and from the blog page.
-        ``` <!-- Yoast SEO Breadcrumbs implementation -->
-        <?php
-        if ( function_exists('yoast_breadcrumb') && !is_home() && !is_page()) {
-        yoast_breadcrumb('<p id="breadcrumbs">','</p>');
-        }
-        ?> 
-	```
-        If you want to target an specific page or post, you can implement the IF using is_page or is_post functions, as follows:
-        _eliminates breadcrumbs from page ID 2147_
+
+``` <!-- Yoast SEO Breadcrumbs implementation -->
+<?php
+if ( function_exists('yoast_breadcrumb') && !is_home() && !is_page()) {
+yoast_breadcrumb('<p id="breadcrumbs">','</p>');
+}
+?> 
+```
+If you want to target an specific page or post, you can implement the IF using is_page or is_post functions, as follows:
+_eliminates breadcrumbs from page ID 2147_
         
-	``` <!-- Yoast SEO Breadcrumbs implementation -->
-        <?php
-        if ( function_exists('yoast_breadcrumb') && !is_page( array (2147))) {
-        yoast_breadcrumb('<p id="breadcrumbs">','</p>');
-        }
-        ?> 
-	``` 
+``` <!-- Yoast SEO Breadcrumbs implementation -->
+<?php
+if ( function_exists('yoast_breadcrumb') && !is_page( array (2147))) {
+yoast_breadcrumb('<p id="breadcrumbs">','</p>');
+}
+?> 
+``` 
 For the Blog Page, use is_home() and is_page() together. For the Homesite, use is_front_page(). For more options including examples check reference [1].
                 
 **Via CSS**
 Yoast SEO implements breadcrumbs as an ID, so you'll use the # symbol on CSS. You can target specific pages using CSS methods .postid and .page-id as follows: 
 _eliminates breadcrumbs from page ID 2984_
-        ```.postid-2984 #breadcrumbs {
-        display: none !important;
-        } 
-	```
+```.postid-2984 #breadcrumbs {
+display: none !important;
+} 
+```
         
 **Make post or page title (last element of the breadcrumb disappear) via CSS**
 By default, Yoast SEO shows the post / page title on the breadcrumb. To eliminate that redundancy, use this CSS code:
 _Yoast SEO implements the last piece of the breadcrumb as div breadcrumb_lat_
-    ``` .breadcrumb_last {
-    display: none;
-    } 
-    ```
+``` .breadcrumb_last {
+display: none;
+} 
+```
 This method is also useful in eliminating page titles in specific posts / pages as explained on the CSS implementation above.
     
 **Format breadcrumbs appearance via CSS**
 My theme had terrible formatting for breadcrumbs, so I aligned it with logo, removed bottom margins, and then set fonts to look like menu items with this code:
-    ``` #breadcrumbs {
-    margin-left: 400px;
-    margin-bottom: 0px;
-    font-family:	"Raleway",Helvetica,Arial,sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    text-transform: uppercase;
-    text-decoration: none;
-    zoom: 1;
-    letter-spacing: 1px;
-    }
-    ```
+``` #breadcrumbs {
+margin-left: 400px;
+margin-bottom: 0px;
+font-family:	"Raleway",Helvetica,Arial,sans-serif;
+font-size: 13px;
+font-weight: 600;
+text-transform: uppercase;
+text-decoration: none;
+zoom: 1;
+letter-spacing: 1px;
+}
+```
 
 # References  <h2>
 1. [Conditional Tags on Wordpress](https://codex.wordpress.org/Conditional_Tags) containing many examples
 1. [Yoast SEO Breadcrumbs Documentation](https://yoast.com/breadcrumbs-seo/)
 1. [How To Implement Yoast SEO Breadcrumb In Your Theme?](https://napitwptech.com/tutorial/wordpress-development/how-to-implement-yoast-seo-breadcrumb-in-your-theme/)
-
 
 # Want to provide feedback or contribute?  <h1>
 Leave a comment! Thanks for reading and using this.
