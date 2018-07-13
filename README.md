@@ -16,7 +16,7 @@ This code applies to header.php file and to (custom) CSS file in virtually any W
 It is modular: you choose which lines you need to add to make it work for you, custom. Just follow the **Instructions** below.
 
 # Instructions - How to Apply and Customize this Code to Your Needs  <h2>
-1. To implement breadcrumbs, place the code at the end of your theme's headers.php
+**To implement breadcrumbs**, place the code at the end of your theme's headers.php
 _Remember: when you update your theme you may lose this code so create documentation / backup or implement your theme a child theme._ 
 
 ``` <!-- Yoast SEO Breadcrumbs implementation -->
@@ -27,12 +27,12 @@ if ( function_exists('yoast_breadcrumb')) {
 ?> 
 ```
 
-1. **Activate breadcrumbs on Yoast SEO plugin interface.**
+**Activate breadcrumbs on Yoast SEO plugin interface.**
 Wordpress panel > SEO > Panel > Advanced > Breadcrumbs. Select "Activate" button and click "Save Changes".
 Breadcrumbs are now active on your theme. Now choose from the options below the type of customization you want to apply:
 
-    1. **Selective show / remove breadcrumbs from certain pages**
-        1. **Via PHP**
+**Selective show / remove breadcrumbs from certain pages**
+1. **Via PHP**
 One efficient way to remove certain pages is to implement it via IF statement on PHP on header.php
 This code eliminates breadcrumbs from all pages and from the blog page.
         ``` <!-- Yoast SEO Breadcrumbs implementation -->
@@ -54,7 +54,7 @@ This code eliminates breadcrumbs from all pages and from the blog page.
 	``` 
 For the Blog Page, use is_home() and is_page() together. For the Homesite, use is_front_page(). For more options including examples check reference [1].
                 
-        1. **Via CSS**
+1. **Via CSS**
 Yoast SEO implements breadcrumbs as an ID, so you'll use the # symbol on CSS. You can target specific pages using CSS methods .postid and .page-id as follows: 
         _eliminates breadcrumbs from page ID 2984_
         ```.postid-2984 #breadcrumbs {
@@ -62,7 +62,7 @@ Yoast SEO implements breadcrumbs as an ID, so you'll use the # symbol on CSS. Yo
         } 
 	```
         
-1. **Make post or page title (last element of the breadcrumb disappear) via CSS**
+**Make post or page title (last element of the breadcrumb disappear) via CSS**
 By default, Yoast SEO shows the post / page title on the breadcrumb. To eliminate that redundancy, use this CSS code:
     _Yoast SEO implements the last piece of the breadcrumb as div breadcrumb_lat_
     ``` .breadcrumb_last {
@@ -71,7 +71,7 @@ By default, Yoast SEO shows the post / page title on the breadcrumb. To eliminat
     ```
     This method is also useful in eliminating page titles in specific posts / pages as explained on the CSS implementation above.
     
-1. **Format breadcrumbs appearance via CSS**
+**Format breadcrumbs appearance via CSS**
     My theme had terrible formatting for breadcrumbs, so I aligned it with logo, removed bottom margins, and then set fonts to look like menu items with this code:
     ``` #breadcrumbs {
     margin-left: 400px;
