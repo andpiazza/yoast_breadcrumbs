@@ -24,7 +24,8 @@ _Remember: when you update your theme you may lose this code so create documenta
 if ( function_exists('yoast_breadcrumb')) {
 	yoast_breadcrumb('<p id="breadcrumbs">','</p>');
 }
-?> ```
+?> 
+```
 
 1. Activate breadcrumbs on Yoast SEO plugin interface.
 Wordpress panel > SEO > Panel > Advanced > Breadcrumbs. Select "Activate" button and click "Save Changes".
@@ -39,7 +40,8 @@ Breadcrumbs are now active on your theme. Now choose from the options below the 
         if ( function_exists('yoast_breadcrumb') && !is_home() && !is_page()) {
         yoast_breadcrumb('<p id="breadcrumbs">','</p>');
         }
-        ?> ```
+        ?> 
+	```
         
         If you want to target an specific page or post, you can implement the IF using is_page or is_post functions, as follows:
         _eliminates breadcrumbs from page ID 2147_
@@ -48,7 +50,8 @@ Breadcrumbs are now active on your theme. Now choose from the options below the 
         if ( function_exists('yoast_breadcrumb') && !is_page( array (2147))) {
         yoast_breadcrumb('<p id="breadcrumbs">','</p>');
         }
-        ?> ```
+        ?> 
+	```
         
         For the Blog Page, use is_home() and is_page() together
         For the Homesite, use is_front_page()
@@ -59,14 +62,16 @@ Breadcrumbs are now active on your theme. Now choose from the options below the 
         _eliminates breadcrumbs from page ID 2984_
         ```.postid-2984 #breadcrumbs {
         display: none !important;
-        } ```
+        } 
+	```
         
     1. Make post or page title (last element of the breadcrumb disappear) via CSS
     By default, Yoast SEO shows the post / page title on the breadcrumb. To eliminate that redundancy, use this CSS code:
     _Yoast SEO implements the last piece of the breadcrumb as div breadcrumb_lat_
     ``` .breadcrumb_last {
     display: none;
-    } ```
+    } 
+    ```
     This method is also useful in eliminating page titles in specific posts / pages as explained on the CSS implementation above.
     
     1. Format breadcrumbs appearance via CSS
@@ -81,7 +86,8 @@ Breadcrumbs are now active on your theme. Now choose from the options below the 
     text-decoration: none;
     zoom: 1;
     letter-spacing: 1px;
-    } ```
+    }
+    ```
 
 # References  <h2>
 1. [Conditional Tags on Wordpress](https://codex.wordpress.org/Conditional_Tags) containing many examples
