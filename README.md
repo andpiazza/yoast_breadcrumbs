@@ -32,7 +32,7 @@ Wordpress panel > SEO > Panel > Advanced > Breadcrumbs. Select "Activate" button
 Breadcrumbs are now active on your theme. Now choose from the options below the type of customization you want to apply:
 
 **Selective show / remove breadcrumbs from certain pages**
-1. **Via PHP**
+**Via PHP**
 One efficient way to remove certain pages is to implement it via IF statement on PHP on header.php
 This code eliminates breadcrumbs from all pages and from the blog page.
         ``` <!-- Yoast SEO Breadcrumbs implementation -->
@@ -54,9 +54,9 @@ This code eliminates breadcrumbs from all pages and from the blog page.
 	``` 
 For the Blog Page, use is_home() and is_page() together. For the Homesite, use is_front_page(). For more options including examples check reference [1].
                 
-1. **Via CSS**
+**Via CSS**
 Yoast SEO implements breadcrumbs as an ID, so you'll use the # symbol on CSS. You can target specific pages using CSS methods .postid and .page-id as follows: 
-        _eliminates breadcrumbs from page ID 2984_
+_eliminates breadcrumbs from page ID 2984_
         ```.postid-2984 #breadcrumbs {
         display: none !important;
         } 
@@ -64,15 +64,15 @@ Yoast SEO implements breadcrumbs as an ID, so you'll use the # symbol on CSS. Yo
         
 **Make post or page title (last element of the breadcrumb disappear) via CSS**
 By default, Yoast SEO shows the post / page title on the breadcrumb. To eliminate that redundancy, use this CSS code:
-    _Yoast SEO implements the last piece of the breadcrumb as div breadcrumb_lat_
+_Yoast SEO implements the last piece of the breadcrumb as div breadcrumb_lat_
     ``` .breadcrumb_last {
     display: none;
     } 
     ```
-    This method is also useful in eliminating page titles in specific posts / pages as explained on the CSS implementation above.
+This method is also useful in eliminating page titles in specific posts / pages as explained on the CSS implementation above.
     
 **Format breadcrumbs appearance via CSS**
-    My theme had terrible formatting for breadcrumbs, so I aligned it with logo, removed bottom margins, and then set fonts to look like menu items with this code:
+My theme had terrible formatting for breadcrumbs, so I aligned it with logo, removed bottom margins, and then set fonts to look like menu items with this code:
     ``` #breadcrumbs {
     margin-left: 400px;
     margin-bottom: 0px;
