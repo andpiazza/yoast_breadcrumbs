@@ -106,6 +106,7 @@ letter-spacing: 1px;
 1. [Conditional Tags on Wordpress](https://codex.wordpress.org/Conditional_Tags) containing many examples
 1. [Yoast SEO Breadcrumbs Documentation](https://yoast.com/breadcrumbs-seo/)
 1. [How To Implement Yoast SEO Breadcrumb In Your Theme?](https://napitwptech.com/tutorial/wordpress-development/how-to-implement-yoast-seo-breadcrumb-in-your-theme/)
+1. [Breadcrumbs For Web Sites: What, When and How](https://uxplanet.org/breadcrumbs-for-web-sites-what-when-and-how-9273dacf1960) is a great overview of how to properly use breadcrumbs to enhance UX 
 
 ## Want to provide feedback or contribute?
 Leave a comment! Thanks for reading and using this.
