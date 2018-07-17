@@ -58,10 +58,12 @@ yoast_breadcrumb('<p id="breadcrumbs">','</p>');
 ?> 
 ``` 
 For the Blog Page, implement the IF using is_home() and is_page() together:
-```if ( function_exists('yoast_breadcrumb') && !is_page() && !is_home() {
+```
+if ( function_exists('yoast_breadcrumb') && !is_page() && !is_home() {
 ```
 For the Homesite, use is_front_page():
-```if ( function_exists('yoast_breadcrumb') && !front_page() {
+```
+if ( function_exists('yoast_breadcrumb') && !front_page() {
 ```
 For more options including examples check reference [1].
                 
