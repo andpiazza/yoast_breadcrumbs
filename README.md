@@ -1,21 +1,21 @@
-# yoast_breadcrumbs <h1>
-# What is This <h2>
+# yoast_breadcrumbs
+## What is This
 A project to help Wordpress / Yoast SEO community customize the appearance of breadcrumbs in their website
 
-# Problems this code solves  <h2>
+## Problems this code solves
 There's abundant documentation on how to implement Yoast SEO breadcrumbs. However, there's very little clarity around a couple of problems:
 * How to make the post title (last element of the breadcrumb) disappear
 * How to format breadcrumbs appearance on the website
 * How to selectively show / remove breadcrumbs (from specific pages, posts, homepage, blog, etc) 
 
-# Who's This For  <h2>
+## Who's This For
 Developers, webmasters and users that want to configure breadcrumbs above/beyond what Yoast SEO plug interface allows them to, in a simple and elegant way.
 
-# The Solution  <h2>
+## The Solution
 This code applies to header.php file and to (custom) CSS file in virtually any Wordpress theme out there.
 It is modular: you choose which lines you need to add to make it work for you, custom. Just follow the **Instructions** below.
 
-# Instructions - How to Apply and Customize this Code to Your Needs  <h2>
+## Instructions - How to Apply and Customize this Code to Your Needs  <h2>
 **To implement breadcrumbs**, place the code at the end of your theme's headers.php
 _Remember: when you update your theme you may lose this code so create documentation / backup or implement your theme a child theme._ 
 
@@ -93,10 +93,10 @@ letter-spacing: 1px;
 }
 ```
 
-# References  <h2>
+## References
 1. [Conditional Tags on Wordpress](https://codex.wordpress.org/Conditional_Tags) containing many examples
 1. [Yoast SEO Breadcrumbs Documentation](https://yoast.com/breadcrumbs-seo/)
 1. [How To Implement Yoast SEO Breadcrumb In Your Theme?](https://napitwptech.com/tutorial/wordpress-development/how-to-implement-yoast-seo-breadcrumb-in-your-theme/)
 
-# Want to provide feedback or contribute?  <h1>
+## Want to provide feedback or contribute?
 Leave a comment! Thanks for reading and using this.
