@@ -5,7 +5,6 @@ A project to help Wordpress / Yoast SEO community customize the appearance of br
 There's abundant documentation on how to implement Yoast SEO breadcrumbs. However, there's very little clarity around a few problems faced by web developers:
 1. How to align breadcrumbs with the body of your page/posts
 1. How to remove the last element (current page / post title) from the breadcrumb
-1. How to remove breadcrumbs first element (site name) from the website but keep show it on search engines 
 1. How to format breadcrumbs appearance on the website
 1. How to selectively show / remove breadcrumbs from specific pages, posts, homepage, blog, etc
 
@@ -115,26 +114,6 @@ display: none;
 ```
 This method is also useful in eliminating page / post titles in specific URLs as explained on the CSS implementation above.
 
-**Remove / not show the first element (site name) of the breadcrumb while keeping it on search mechanisms**
-Now you already know how to remove the last element. You might also want to remove the first element, by Yoast SEO default "Your Site Name".
-
-You might think: "_I can remove the "Anchor Text for the Homepage" on the Yoast SEO config panel_". Yes you can! Problem being: when Google shows your breadcrumb's snippets on search, it will show https://yourwebsite.com as the first breadcrumb, instead of "Your Site Name". Even the [Yoast website has this problem.](https://yoast.com/app/uploads/2017/07/breadcrumb-seo-google-example.jpg)
-
-There's a way to show "Your Site Name" on the search snippet on Google AND to hide "Your Site Name" from the breadcrumbs using CSS.
-Here's the tricky mechanism: Yoast implements attributes for child, not for the parent / first element of the breadcrumb. So our code will take two actions to accomplish it:
-* first, remove all the elements
-* to then show only the child elements
-
-```
-span:not([rel="v:child"])[typeof="v:Breadcrumb"] a {
-	display:none;
-}
-
-span[rel="v:child"][typeof="v:Breadcrumb"]:nth-child(2) a {
-	display:initial;
-}
-```
-
 **Format breadcrumbs appearance using CSS**
 My theme had terrible formatting for breadcrumbs, so I aligned it with logo, removed bottom margins, and then set fonts to look like the menu items using this code. Customize to your needs!
 
@@ -155,7 +134,8 @@ letter-spacing: 1px;
 1. [Conditional Tags on Wordpress](https://codex.wordpress.org/Conditional_Tags) containing many examples
 1. [Yoast SEO Breadcrumbs Documentation](https://yoast.com/breadcrumbs-seo/)
 1. [How To Implement Yoast SEO Breadcrumb In Your Theme?](https://napitwptech.com/tutorial/wordpress-development/how-to-implement-yoast-seo-breadcrumb-in-your-theme/)
-1. [Breadcrumbs For Web Sites: What, When and How](https://uxplanet.org/breadcrumbs-for-web-sites-what-when-and-how-9273dacf1960) is a great overview of how to properly use breadcrumbs to enhance UX 
+1. [Breadcrumbs For Web Sites: What, When and How](https://uxplanet.org/breadcrumbs-for-web-sites-what-when-and-how-9273dacf1960) is a great overview of how to properly use breadcrumbs to enhance UX
+1. [The Skinny on CSS Attribute Selectors](https://css-tricks.com/attribute-selectors/) explains how to implement CSS selectors based on attribute selection.
 
 ## Want to provide feedback or contribute?
 Leave a comment! Thanks for reading and using this.
