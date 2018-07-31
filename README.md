@@ -52,6 +52,7 @@ Breadcrumbs are now active on your theme.
 Now choose from the options below the type of customization you want to apply:
 
 **4. _Selectively_ show / remove breadcrumbs from certain pages**
+
 **Best solution: PHP**
 One efficient way to remove certain pages is to implement it via IF statement on PHP on header.php
 This code eliminates breadcrumbs from all pages and from the blog page.
@@ -121,7 +122,7 @@ My theme had terrible formatting for breadcrumbs, so I aligned it with logo, rem
 #breadcrumbs {
 margin-left: 400px;
 margin-bottom: 0px;
-font-family:	"Raleway",Helvetica,Arial,sans-serif;
+font-family: "Raleway",Helvetica,Arial,sans-serif;
 font-size: 13px;
 font-weight: 600;
 text-transform: uppercase;
