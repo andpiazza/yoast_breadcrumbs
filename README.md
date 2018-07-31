@@ -2,10 +2,12 @@
 A project to help Wordpress / Yoast SEO community customize the appearance of breadcrumbs in their website
 
 ## Problems this code solves
-There's abundant documentation on how to implement Yoast SEO breadcrumbs. However, there's very little clarity around a couple of problems:
-* How to make the post title (last element of the breadcrumb) disappear
+There's abundant documentation on how to implement Yoast SEO breadcrumbs. However, there's very little clarity around a few problems faced by web developers:
+* How to align breadcrumbs with the body of your page/posts
+* How to remove the last element (post title) from the breadcrumb
+* How to remove breadcrumbs first element (site name) from the website but keep show it on search engines 
 * How to format breadcrumbs appearance on the website
-* How to selectively show / remove breadcrumbs (from specific pages, posts, homepage, blog, etc) 
+* How to selectively show / remove breadcrumbs from specific pages, posts, homepage, blog, etc
 
 ## Who's This For
 Developers, webmasters and users that want to configure breadcrumbs above/beyond what Yoast SEO plug interface allows them to, in a simple and elegant way.
@@ -16,8 +18,8 @@ Developers, webmasters and users that want to configure breadcrumbs above/beyond
 * This could be easily extended to other breadcrumb plugins, generators like Genesys and others: knowing how your plugin implemented the HTML code (classes, ids, etc) will allow you to easily customize the code that follows.
 
 ## Instructions - How to Apply and Customize this Code to Your Needs
-**Implement breadcrumbs**: place the code at the end of your theme's headers.php
-_Remember: when you update your theme you may lose this code so create documentation / backup or implement your theme a child theme._ 
+**First, Let's fix a problem that Yoast SEO folks didn't catch**
+If you follow [Yoast SEO's implementation instructions for breadcrumbs](https://kb.yoast.com/kb/implement-wordpress-seo-breadcrumbs/), they will give you this code:
 
 ```
 <!-- Yoast SEO Breadcrumbs implementation -->
@@ -27,6 +29,22 @@ if ( function_exists('yoast_breadcrumb')) {
 }
 ?> 
 ```
+Problem being: it misaligns breadcrumbs from the content of your page.
+
+**Implement breadcrumbs THE RIGHT WAY**: place the code at the end of your theme's headers.php
+_Remember: when you update your theme you may lose this code so create documentation / backup or implement your theme a child theme._ 
+This code creates a container class on breadcrumbs.
+
+```
+<!-- Yoast SEO Breadcrumbs implementation THE RIGHT WAY -->
+<div class='yoast-container container'>
+<?php
+	if ( function_exists('yoast_breadcrumb') && !is_home() && !is_page()) {
+	yoast_breadcrumb('<p id="breadcrumbs">','</p>');
+	}
+?>
+</div>
+```
 
 **Activate breadcrumbs on Yoast SEO plugin interface**
 Wordpress panel > SEO > Panel > Advanced > Breadcrumbs. Select "Activate" button and click "Save Changes".
@@ -34,7 +52,7 @@ Breadcrumbs are now active on your theme.
 Now choose from the options below the type of customization you want to apply:
 
 **_Selectively_ show / remove breadcrumbs from certain pages**
-**Via PHP**
+**Best solution: PHP**
 One efficient way to remove certain pages is to implement it via IF statement on PHP on header.php
 This code eliminates breadcrumbs from all pages and from the blog page.
 
@@ -67,7 +85,7 @@ if ( function_exists('yoast_breadcrumb') && !front_page() {
 ```
 For more options including examples check reference [1].
                 
-**Via CSS**
+**Alternative solution: CSS**
 Yoast SEO implements breadcrumbs as an ID, so you'll use the # symbol on CSS. You can target specific pages using CSS methods .postid and .page-id as follows: 
 _this sample eliminates breadcrumbs from page ID 2984_
 ```
@@ -76,7 +94,7 @@ display: none !important;
 } 
 ```
         
-**Make the last element of the breadcrumb (post or page title) not show via CSS**
+**Remove / not show the last element of the breadcrumb (post or page title)**
 By default, Yoast SEO shows the post / page title on the breadcrumb. To eliminate that redundancy, use this CSS code:
 _Yoast SEO implements the last piece of the breadcrumb as div breadcrumb_last_
 ```
@@ -85,9 +103,30 @@ display: none;
 } 
 ```
 This method is also useful in eliminating page / post titles in specific URLs as explained on the CSS implementation above.
-    
-**Format breadcrumbs appearance via CSS**
+
+**Remove / not show the first element (site name) of the breadcrumb while keeping it on search mechanisms**
+Now you already know how to remove the last element. You might also want to remove the first element, by Yoast SEO default "Your Site Name".
+
+You might think: "_I can remove the "Anchor Text for the Homepage" on the Yoast SEO config panel_". Yes you can! Problem being: when Google shows your breadcrumb's snippets on search, it will show https://yourwebsite.com as the first breadcrumb, instead of "Your Site Name". Even the [Yoast website has this problem.](https://yoast.com/app/uploads/2017/07/breadcrumb-seo-google-example.jpg)
+
+There's a way to show "Your Site Name" on the search snippet on Google AND to hide "Your Site Name" from the breadcrumbs using CSS.
+Here's the tricky mechanism: Yoast implements attributes for child, not for the parent / first element of the breadcrumb. So our code will take two actions to accomplish it:
+* first, remove all the elements
+* to then show only the child elements
+
+```
+span:not([rel="v:child"])[typeof="v:Breadcrumb"] a {
+	display:none;
+}
+
+span[rel="v:child"][typeof="v:Breadcrumb"]:nth-child(2) a {
+	display:initial;
+}
+```
+
+**Format breadcrumbs appearance using CSS**
 My theme had terrible formatting for breadcrumbs, so I aligned it with logo, removed bottom margins, and then set fonts to look like the menu items using this code. Customize to your needs!
+
 ```
 #breadcrumbs {
 margin-left: 400px;
@@ -97,7 +136,6 @@ font-size: 13px;
 font-weight: 600;
 text-transform: uppercase;
 text-decoration: none;
-zoom: 1;
 letter-spacing: 1px;
 }
 ```
