@@ -4,13 +4,14 @@ A project to help Wordpress / Yoast SEO community customize the appearance of br
 ## Problems this code solves
 There's abundant documentation on how to implement Yoast SEO breadcrumbs. However, there's very little clarity around a few problems faced by web developers:
 1. How to align breadcrumbs with the body of your page/posts
-1. How to remove the last element (post title) from the breadcrumb
+1. How to remove the last element (current page / post title) from the breadcrumb
 1. How to remove breadcrumbs first element (site name) from the website but keep show it on search engines 
 1. How to format breadcrumbs appearance on the website
 1. How to selectively show / remove breadcrumbs from specific pages, posts, homepage, blog, etc
 
 ## Who's This For
 Developers, webmasters and users that want to configure breadcrumbs above/beyond what Yoast SEO plug interface allows them to, in a simple and elegant way.
+Even though these instructions pertain to Yoast SEO, they could be easily adapted to other SEO plugins available on the marketplace.
 
 ## The Solution
 * This code applies to header.php file and to (custom) CSS file in virtually any Wordpress theme out there.
@@ -104,7 +105,7 @@ display: none !important;
 } 
 ```
         
-**Remove / not show the last element of the breadcrumb (post or page title)**
+**Remove / not show the last element of the breadcrumb (current post / page title)**
 By default, Yoast SEO shows the post / page title on the breadcrumb. To eliminate that redundancy, use this CSS code:
 _Yoast SEO implements the last piece of the breadcrumb as div breadcrumb_last_
 ```
