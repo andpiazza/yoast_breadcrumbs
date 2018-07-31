@@ -18,28 +18,28 @@ Developers, webmasters and users that want to configure breadcrumbs above/beyond
 * This could be easily extended to other breadcrumb plugins, generators like Genesys and others: knowing how your plugin implemented the HTML code (classes, ids, etc) will allow you to easily customize the code that follows.
 
 ## Instructions - How to Apply and Customize this Code to Your Needs
-**First, Let's fix a problem that Yoast SEO folks didn't catch**
+**First, Let's fix a problem that Yoast SEO instructions is blind to**
 If you follow [Yoast SEO's implementation instructions for breadcrumbs](https://kb.yoast.com/kb/implement-wordpress-seo-breadcrumbs/), they will give you this code:
 
 ```
-<!-- Yoast SEO Breadcrumbs implementation -->
+<!-- Yoast SEO Breadcrumbs FLAWED implementation -->
 <?php
 if ( function_exists('yoast_breadcrumb')) {
 	yoast_breadcrumb('<p id="breadcrumbs">','</p>');
 }
 ?> 
 ```
-Problem being: it misaligns breadcrumbs from the content of your page.
+Problem being: it may misalign breadcrumbs from the content of your page.
 
 **Implement breadcrumbs THE RIGHT WAY**: place the code at the end of your theme's headers.php
 _Remember: when you update your theme you may lose this code so create documentation / backup or implement your theme a child theme._ 
-This code creates a container class on breadcrumbs.
+This code creates a container class on breadcrumbs, which will follow the container formatting using in the body of your pages / post thus keeping alignment.
 
 ```
 <!-- Yoast SEO Breadcrumbs implementation THE RIGHT WAY -->
 <div class='yoast-container container'>
 <?php
-	if ( function_exists('yoast_breadcrumb') && !is_home() && !is_page()) {
+	if ( function_exists('yoast_breadcrumb') ) {
 	yoast_breadcrumb('<p id="breadcrumbs">','</p>');
 	}
 ?>
@@ -57,39 +57,49 @@ One efficient way to remove certain pages is to implement it via IF statement on
 This code eliminates breadcrumbs from all pages and from the blog page.
 
 ```
-<!-- Yoast SEO Breadcrumbs implementation -->
-<?php
+<!-- Yoast SEO Breadcrumbs implementation THE RIGHT WAY while not showing on blog page -->
+<div class='yoast-container container'>
 if ( function_exists('yoast_breadcrumb') && !is_home() && !is_page()) {
 yoast_breadcrumb('<p id="breadcrumbs">','</p>');
 }
-?> 
+?>
+</div>
 ```
+
 If you want to target a specific page or post, you can implement the IF using is_page or is_post functions, as follows:
 _eliminates breadcrumbs from page ID 2147_
         
 ```
-<!-- Yoast SEO Breadcrumbs implementation -->
+<!-- Yoast SEO Breadcrumbs implementation THE RIGHT WAY while not showing on an page id 2147 -->
+<div class='yoast-container container'>
 <?php
-if ( function_exists('yoast_breadcrumb') && !is_page( array (2147))) {
-yoast_breadcrumb('<p id="breadcrumbs">','</p>');
-}
-?> 
+	if ( function_exists('yoast_breadcrumb') && !is_page( array (2147))) {
+	yoast_breadcrumb('<p id="breadcrumbs">','</p>');
+	}
+?>
+</div>
 ``` 
+
+To create your own criteria:
 For the Blog Page, implement the IF using is_home() and is_page() together:
+
 ```
 if ( function_exists('yoast_breadcrumb') && !is_page() && !is_home() {
 ```
+
 For the Homesite, use is_front_page():
+
 ```
 if ( function_exists('yoast_breadcrumb') && !front_page() {
 ```
-For more options including examples check reference [1].
+
+For more criteria / options including examples check reference [1].
                 
 **Alternative solution: CSS**
-Yoast SEO implements breadcrumbs as an ID, so you'll use the # symbol on CSS. You can target specific pages using CSS methods .postid and .page-id as follows: 
+Yoast SEO implements breadcrumbs as an ID, so you'll use the # symbol on CSS. You can target specific pages using CSS selectors .postid and .page-id as follows: 
 _this sample eliminates breadcrumbs from page ID 2984_
 ```
-.postid-2984 #breadcrumbs {
+.page-id-2984 #breadcrumbs {
 display: none !important;
 } 
 ```
