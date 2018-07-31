@@ -81,17 +81,22 @@ _eliminates breadcrumbs from page ID 2147_
 </div>
 ``` 
 
-To create your own criteria:
-For the Blog Page, implement the IF using is_home() and is_page() together:
+For an specific..., use function:
+* page: is_page()
+* post: is_single ()
+* blog page: is_home() and is_page() together
+* homesite: is_front_page()
+* category page: is_category() 
+* tag page: is_tag()
+* archive page: is_archive()
+* search page: is_search()
+* 404 page: is_404()
+* author page: is_author()
+
+Example: for the Blog Page, implement the IF using is_home() and is_page() together:
 
 ```
 if ( function_exists('yoast_breadcrumb') && !is_page() && !is_home() {
-```
-
-For the Homesite, use is_front_page():
-
-```
-if ( function_exists('yoast_breadcrumb') && !front_page() {
 ```
 
 For more criteria / options including examples check reference [1].
